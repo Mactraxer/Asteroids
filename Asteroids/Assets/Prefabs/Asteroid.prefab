@@ -105,6 +105,8 @@ GameObject:
   m_Component:
   - component: {fileID: 602240820081651323}
   - component: {fileID: 8085004743843461295}
+  - component: {fileID: -3619670696236017369}
+  - component: {fileID: -4480376586795670732}
   m_Layer: 0
   m_Name: Asteroid
   m_TagString: Untagged
@@ -143,3 +145,29 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!135 &-3619670696236017369
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 682514488734586287}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-4480376586795670732
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 682514488734586287}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 622f336ed908b3346bad7f0e3ca6b81c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chipedAsteroidPrefab: {fileID: 1805957961515418259, guid: 1a6e54481ece19542bf0e3e0071ba8d4, type: 3}

@@ -14,6 +14,7 @@ public class ObjectSpawner : MonoBehaviour
     float timeToSpawnEnemySpaceShip = 5f;
 
     float asteroidSpeed = 5f;
+    float enemyShipSpeed = 0.1f;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,10 +29,11 @@ public class ObjectSpawner : MonoBehaviour
 
     private void FixedUpdate()
     {
-        TickAsteroidTimer();
+        TickAsteroidSpawnTimer();
+        TickEnemyShipSpawnTimer();
     }
 
-    private void TickAsteroidTimer()
+    private void TickAsteroidSpawnTimer()
     {
         timeToSpawnAsteroid -= Time.deltaTime;
         if (timeToSpawnAsteroid < 0)
@@ -41,23 +43,35 @@ public class ObjectSpawner : MonoBehaviour
         }
     }
 
+    private void TickEnemyShipSpawnTimer()
+    {
+        timeToSpawnEnemySpaceShip -= Time.deltaTime;
+        if (timeToSpawnEnemySpaceShip < 0)
+        {
+            SpawnEnemyShip();
+            timeToSpawnEnemySpaceShip = Random.Range(1,5);
+        }
+    }
+
     private void SpawnAsteroid()
     {
         Vector3 randomVector = GetRandomTopVector();
-        Debug.Log(randomVector);
+        //Debug.Log(randomVector);
         GameObject spawnedAsteroid = Instantiate(asteroidPrefab, randomVector, Quaternion.identity);
         spawnedAsteroid.GetComponent<Rigidbody>().velocity = Vector3.down * asteroidSpeed;
     }
 
     private Vector3 GetRandomTopVector()
     {
-        Vector3 screenVector = new Vector3(Random.Range(0, Screen.width), Screen.height, Camera.main.transform.position.z);
-        Debug.Log($"screenVector {screenVector}");
-        return Camera.main.ScreenToWorldPoint(screenVector) * -1;
+        Vector3 screenVector = new Vector3(Random.Range(0, Screen.width), Screen.height, -Camera.main.transform.position.z);
+        //Debug.Log($"screenVector {screenVector}");
+        return Camera.main.ScreenToWorldPoint(screenVector);
     }
 
     private void SpawnEnemyShip()
     {
-
+        Vector3 randomVector = GetRandomTopVector();
+        GameObject spawnedEnemyShip = Instantiate(enemySpaceShipPrefab, randomVector, Quaternion.identity);
+       // spawnedEnemyShip.GetComponent<Rigidbody>().velocity = Vector3.down * 1f;
     }
 }

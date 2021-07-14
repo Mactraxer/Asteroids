@@ -67,7 +67,7 @@ public class SpaceShipMoveController : MonoBehaviour
 
     Vector2 getTouchPosition(Vector2 position)
     {
-        Debug.Log(position);
+        //Debug.Log(position);
         return mainCamera.ScreenToWorldPoint(new Vector3(position.x, 0, mainCamera.transform.position.z));
     }
     void Shoot()
@@ -78,7 +78,7 @@ public class SpaceShipMoveController : MonoBehaviour
 
     void Move(Vector2 position)
     {
-        Debug.Log($"new pos {position}");
+        //Debug.Log($"new pos {position}");
         spaceshipTransform.Translate(position * speed * Time.deltaTime);
     }
 
