@@ -10,6 +10,8 @@ public class EnemyShipController : MonoBehaviour
     Rigidbody shipRigidbody;
     [SerializeField]
     Transform shipTransform;
+    [SerializeField]
+    ScoreCalculator eventDelegate;
 
     private float shipSpeed = 1f;
 
@@ -17,6 +19,7 @@ public class EnemyShipController : MonoBehaviour
     void Start()
     {
         shipRigidbody.velocity = shipSpeed * Vector3.down;
+        eventDelegate = GameObject.Find("ScoreText").GetComponent<ScoreCalculator>();
     }
 
     // Update is called once per frame
@@ -27,11 +30,20 @@ public class EnemyShipController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (transform.position.x != playerTransform.position.x)
+        if (transform.position.x != playerTransform.position.x && transform.position.y >= playerTransform.position.y)
         {
-            Debug.Log(playerTransform.position);
-            //shipTransform.Translate(playerTransform.position * 2f * Time.deltaTime);
-            shipRigidbody.velocity = shipSpeed * (playerTransform.position - shipTransform.position);
+            Vector3 direction = playerTransform.position - transform.position;
+            shipRigidbody.AddForce(direction.normalized);
         }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Ally")
+        {
+            eventDelegate.AddScore(500);
+        }
+
+        Destroy(gameObject);
     }
 }

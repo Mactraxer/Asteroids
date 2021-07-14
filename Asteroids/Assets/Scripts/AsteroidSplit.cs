@@ -8,9 +8,12 @@ public class AsteroidSplit : MonoBehaviour
     [SerializeField]
     GameObject chipedAsteroidPrefab;
     private float chipAsteroidSpeed = 5f;
+    [SerializeField]
+    ScoreCalculator eventDelegate;
+
     void Start()
     {
-        
+        eventDelegate = GameObject.Find("ScoreText").GetComponent<ScoreCalculator>();
     }
 
     // Update is called once per frame
@@ -21,6 +24,10 @@ public class AsteroidSplit : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        if (collision.gameObject.tag == "Ally")
+        {
+            eventDelegate.AddScore(250);
+        }
         GameObject spawnedChipAsteroid = Instantiate(chipedAsteroidPrefab, new Vector3(transform.position.x,transform.position.y), Quaternion.identity);
         spawnedChipAsteroid.GetComponent<Rigidbody>().velocity = Vector3.down * chipAsteroidSpeed;
         Destroy(this.gameObject);

@@ -298,6 +298,7 @@ GameObject:
   - component: {fileID: 1030221131363317583}
   - component: {fileID: -2588846255103571587}
   - component: {fileID: -6951415163205955155}
+  - component: {fileID: -4421170086584895626}
   m_Layer: 0
   m_Name: EnemySpaceShip
   m_TagString: Untagged
@@ -336,7 +337,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!114 &-6951415163205955155
 MonoBehaviour:
@@ -353,3 +354,16 @@ MonoBehaviour:
   playerTransform: {fileID: 6898347463606812874, guid: 2849d7f6be5989943beb217ec2acf246, type: 3}
   shipRigidbody: {fileID: -2588846255103571587}
   shipTransform: {fileID: 1030221131363317583}
+--- !u!114 &-4421170086584895626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4966268252807659110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff55e0541def69340913cc403000cc47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 7222627182880969850, guid: 608c85da6440db94f93899eff5f7ee81, type: 3}

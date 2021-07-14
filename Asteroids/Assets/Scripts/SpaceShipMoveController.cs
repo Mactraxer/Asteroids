@@ -73,6 +73,7 @@ public class SpaceShipMoveController : MonoBehaviour
     void Shoot()
     {
         GameObject createdBullet = Instantiate(bullet, new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z), Quaternion.identity);
+        createdBullet.tag = "Ally";
         createdBullet.GetComponent<Rigidbody>().velocity = Vector3.up * speed;   
     }
 
