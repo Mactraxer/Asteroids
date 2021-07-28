@@ -13,7 +13,7 @@ public class ObjectSpawner : MonoBehaviour
     float timeToSpawnAsteroid = 2f;
     float timeToSpawnEnemySpaceShip = 5f;
 
-    float asteroidSpeed = 5f;
+    float asteroidSpeed = 2f;
     float enemyShipSpeed = 0.1f;
     // Start is called before the first frame update
     void Start()
@@ -58,6 +58,7 @@ public class ObjectSpawner : MonoBehaviour
         Vector3 randomVector = GetRandomTopVector();
         //Debug.Log(randomVector);
         GameObject spawnedAsteroid = Instantiate(asteroidPrefab, randomVector, Quaternion.identity);
+        spawnedAsteroid.tag = ObjectTag.Enemy;
         spawnedAsteroid.GetComponent<Rigidbody>().velocity = Vector3.down * asteroidSpeed;
     }
 
@@ -72,6 +73,7 @@ public class ObjectSpawner : MonoBehaviour
     {
         Vector3 randomVector = GetRandomTopVector();
         GameObject spawnedEnemyShip = Instantiate(enemySpaceShipPrefab, randomVector, Quaternion.identity);
+        spawnedEnemyShip.tag = ObjectTag.Enemy;
        // spawnedEnemyShip.GetComponent<Rigidbody>().velocity = Vector3.down * 1f;
     }
 }

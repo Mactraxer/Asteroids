@@ -1,14 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public interface IScoreEventInput
 {
     public void AddScore(int count);
+
 }
 public class ScoreCalculator : MonoBehaviour
 {
+
     [SerializeField]
     Text scoreText;
     private int score;
@@ -35,4 +35,10 @@ public class ScoreCalculator : MonoBehaviour
         score += count;
         UpdateScoreText();
     }
+
+    public int GetScore()
+    {
+        return score;
+    }
+
 }

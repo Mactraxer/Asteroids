@@ -1,6 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class SpaceShipMoveController : MonoBehaviour
 {
@@ -25,7 +24,7 @@ public class SpaceShipMoveController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        ReadTouching();
+        //ReadTouching();
     }
 
     void ReadTouching()
@@ -65,6 +64,16 @@ public class SpaceShipMoveController : MonoBehaviour
         } 
     }
 
+    public void MoveLeft()
+    {
+        spaceshipTransform.Translate(Vector3.left * speed * Time.deltaTime);
+    }
+
+    public void MoveRight()
+    {
+        spaceshipTransform.Translate(Vector3.right * speed * Time.deltaTime);
+    }
+
     Vector2 getTouchPosition(Vector2 position)
     {
         //Debug.Log(position);
@@ -73,7 +82,7 @@ public class SpaceShipMoveController : MonoBehaviour
     void Shoot()
     {
         GameObject createdBullet = Instantiate(bullet, new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z), Quaternion.identity);
-        createdBullet.tag = "Ally";
+        createdBullet.tag = ObjectTag.Ally;
         createdBullet.GetComponent<Rigidbody>().velocity = Vector3.up * speed;   
     }
 
